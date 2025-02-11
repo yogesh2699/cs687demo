@@ -1,0 +1,4 @@
+graphs:
+  - id: agent
+    path: src/agent.py
+    variable: app
