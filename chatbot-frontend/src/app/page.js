@@ -31,7 +31,7 @@ export default function Home() {
 
     try {
       // Send the message to the FastAPI backend
-      const response = await axios.post("http://127.0.0.1:8000/chat", {
+      const response = await axios.post("https://fluffy-memory-5vxg5rvrx5xh7rj6-8000.app.github.dev/chat", {
         message: inputText,
         thread_id: "user_123",
       });

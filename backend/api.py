@@ -31,7 +31,7 @@ class ChatRequest(BaseModel):
 class ChatResponse(BaseModel):
     response: str
 
-@app.get("/chat")
+@app.post("/chat")
 async def chat_with_agent(message: str, thread_id: str = "default_thread"):
     try:
         # Stream the response from the LangGraph app
