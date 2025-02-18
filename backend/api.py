@@ -32,13 +32,13 @@ class ChatResponse(BaseModel):
     response: str
 
 @app.post("/chat")
-async def chat_with_agent(message: str, thread_id: str = "default_thread"):
+async def chat_with_agent(request: ChatRequest):
     try:
         # Stream the response from the LangGraph app
         response = ""
         for event in langgraph_app.stream(
-            {"messages": [{"content": message, "type": "human"}]},
-            config={"configurable": {"thread_id": thread_id}},
+            {"messages": [{"content": request.message, "type": "human"}]},
+            config={"configurable": {"thread_id": request.thread_id}},
         ):
             if "agent" in event:
                 msg = event["agent"]["messages"][-1].content
